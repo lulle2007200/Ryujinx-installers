@@ -12,7 +12,7 @@
 此仓库包含**自动编译的**龙神模拟器安装程序和安装程序以 [Inno Setup](https://jrsoftware.org/isinfo.php) 脚本编写的源代码。</br>
 此项目是一个**第三方的**、一个利用GH Actions自动编译Ryujinx模拟器安装程序的项目。</br>
 如果您想要了解各版本的更新内容，请前往Ryujinx仓库的版本发布页面以查看最新的 [Changelog](https://github.com/GreemDev/Ryujinx/releases)。</br>
-此项目通过GitHub Actions定时检查更新、即时构建，与官方渠道的发行进度基本同步。</br>
+此项目通过GitHub Actions定时检查更新、即时构建，与GreemDev仓库的发行进度基本同步。</br>
 
 ## 使用
 运行安装程序，根据程序引导完成安装，龙神模拟器会安装在您的计算机上并完成文件关联。
