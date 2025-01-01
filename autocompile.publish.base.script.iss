@@ -2,7 +2,7 @@
 #define AppName "Ryujinx Nintendo Switch Emulator"
 #define AppVersion ExecutableVersion + "-win_x64-mul"
 #define AppPublisher "Ryujinx"
-#define AppURL "https://github.com/GreemDev/Ryujinx"
+#define AppURL "https://github.com/Ryubing/Ryujinx"
 #define AppExeName "Ryujinx.exe"
 #define AppAssocName0 "Nintendo Switch Application Package"
 #define AppAssocName1 "Nintendo Switch Gamecard Image"
