@@ -1,8 +1,8 @@
 #define ExecutableVersionInfo ExecutableVersion + ".0"
 #define AppName "Ryujinx Nintendo Switch Emulator"
-#define AppVersion ExecutableVersion + "-win_x64-mul"
+#define AppVersion ExecutableVersion + "-canary-win_x64-mul"
 #define AppPublisher "Ryujinx"
-#define AppURL "https://github.com/Ryubing/Ryujinx"
+#define AppURL "https://ryujinx.app"
 #define AppExeName "Ryujinx.exe"
 #define AppAssocName0 "Nintendo Switch Application Package"
 #define AppAssocName1 "Nintendo Switch Gamecard Image"
@@ -40,7 +40,7 @@ AllowNoIcons=yes
 LicenseFile=INSTALLER_LICENSE.txt
 PrivilegesRequired=lowest
 OutputDir=build
-OutputBaseFilename="ryujinx-{#ExecutableVersion}-win_x64-installer-mul"
+OutputBaseFilename="ryujinx-canary-{#ExecutableVersion}-win_x64-installer-mul"
 SetupIconFile=Ryujinx.ico
 Compression=lzma
 SolidCompression=yes

@@ -11,7 +11,7 @@
 
 此仓库包含**自动编译的**龙神模拟器安装程序和安装程序以 [Inno Setup](https://jrsoftware.org/isinfo.php) 脚本编写的源代码。</br>
 此项目是一个**第三方的**、一个利用GH Actions自动编译Ryujinx模拟器安装程序的项目。</br>
-如果您想要了解各版本的更新内容，请前往Ryujinx仓库的版本发布页面以查看最新的 [Changelog](https://github.com/Ryubing/Ryujinx/releases)。</br>
+如果您想要了解各版本的更新内容，请前往Ryujinx仓库的版本发布页面以查看最新的 [Changelog](https://git.ryujinx.app/ryubing/ryujinx/-/releases)。</br>
 此项目通过GitHub Actions定时检查更新、即时构建，与Ryubing仓库的发行进度基本同步。</br>
 
 ## 使用
@@ -42,9 +42,7 @@
 
 安装完毕后，请根据官方Wiki上的教程完成模拟器配置。
 
-*~~估计现在也看不到了，自己去搜索吧~~*
-
-[配置教程](https://github.com/Ryubing/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide)
+[配置教程](https://git.ryujinx.app/ryubing/ryujinx/-/wikis/Setup-&-Configuration-Guide)
 
 > [!IMPORTANT]
 > **运行本模拟器的计算机至少需配备8GB的运行内存，不达标的计算机强行运行可能会导致游戏卡成PPT或闪崩。**
@@ -56,7 +54,7 @@
 > **本项目纯属在空闲时间中用爱发电，而本人学业繁重，各种BUG的修复可能不及时，望大家多多包涵。**</br>
   **❗️此安装程序为Windows专供。其他操作系统请自行前往仓库发布页面下载。**
 
-[下载传送门](https://github.com/Ryubing/Ryujinx/releases)
+[下载传送门](https://git.ryujinx.app/ryubing/ryujinx/-/releases)
 
 ## 联系我
 * 如果您有各种问题/建议，您可以联系 **[我的枉异邮箱](mailto:jh327063592@163.com)：jh327063592@163.com**。

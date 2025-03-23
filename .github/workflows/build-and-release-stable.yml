@@ -12,7 +12,7 @@ jobs:
       - name: Get version information
         id: version_info
         run: |
-          LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/Ryubing/Ryujinx/releases/latest" | jq -r .tag_name)
+          LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/Ryubing/Stable-Releases/releases/latest" | jq -r .tag_name)
           echo "build_version=$LATEST_RELEASE" >> $GITHUB_OUTPUT
         shell: bash
         
@@ -39,15 +39,15 @@ jobs:
         run: |
           $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
           $PSDefaultParameterValues['Out-File:Encoding'] = 'Default'
-          $response = Invoke-RestMethod -Uri "https://api.github.com/repos/Ryubing/Ryujinx/releases/latest"
+          $response = Invoke-RestMethod -Uri "https://api.github.com/repos/Ryubing/Stable-Releases/releases/latest"
           $tag_name = $response.tag_name
-          $previous_tag_name = cat ryujinx_latest_tag.flag
+          $previous_tag_name = cat ryujinx_stable_latest_tag.flag
           if ($tag_name -eq $previous_tag_name) {
             echo No newer version has been found.
             exit 1
           }         
           else {
-            echo $tag_name > ryujinx_latest_tag.flag
+            echo $tag_name > ryujinx_stable_latest_tag.flag
           }
         shell: powershell
       
@@ -55,8 +55,8 @@ jobs:
         run: |
           git config --global user.name 'LuccaWang404'
           git config --global user.email 'jh327063592@163.com'
-          git add ryujinx_latest_tag.flag
-          git commit -m "Version Update"
+          git add ryujinx_stable_latest_tag.flag
+          git commit -m "Stable Version Update"
         shell: powershell
       
       - name: Push changes
@@ -68,7 +68,7 @@ jobs:
       - name: Save version and date information to $env
         id: version_info
         run: |
-          $response = Invoke-RestMethod -Uri "https://api.github.com/repos/Ryubing/Ryujinx/releases/latest"
+          $response = Invoke-RestMethod -Uri "https://api.github.com/repos/Ryubing/Stable-Releases/releases/latest"
           $tag_name = $response.tag_name
           echo "build_version=$tag_name" >> $env:GITHUB_OUTPUT
           $build_date = Get-Date
@@ -77,8 +77,8 @@ jobs:
         shell: powershell
       - name: Download & extract latest release
         run: |
-          wget -o ryujinx-${{ steps.version_info.outputs.build_version }}-win_x64.zip https://github.com/Ryubing/Ryujinx/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-win_x64.zip
-          wget -o ryujinx-source-${{ steps.version_info.outputs.build_version }}.zip https://github.com/Ryubing/Ryujinx/archive/refs/tags/${{ steps.version_info.outputs.build_version }}.zip
+          wget -o ryujinx-${{ steps.version_info.outputs.build_version }}-win_x64.zip https://github.com/Ryubing/Stable-Releases/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-win_x64.zip
+          wget -o ryujinx-stable-source-${{ steps.version_info.outputs.build_version }}.zip https://git.ryujinx.app/ryubing/ryujinx/-/archive/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}.zip
           7z x ryujinx-${{ steps.version_info.outputs.build_version }}-win_x64.zip
         shell: powershell
 
@@ -87,14 +87,14 @@ jobs:
         run: |
           $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
           $PSDefaultParameterValues['Out-File:Encoding'] = 'Default'
-          echo '#define ExecutableVersion "${{ steps.version_info.outputs.build_version }}"' > autocompile.publish.tmp.script.iss
-          type autocompile.publish.base.script.iss >> autocompile.publish.tmp.script.iss
+          echo '#define ExecutableVersion "${{ steps.version_info.outputs.build_version }}"' > autocompile.publish.tmp.script.stable.iss
+          type autocompile.publish.base.script.stable.iss >> autocompile.publish.tmp.script.stable.iss
         shell: powershell
 
       - name: Compile .ISS to .EXE Installer
         uses: Minionguyjpro/Inno-Setup-Action@v1.1.0
         with:
-          path: autocompile.publish.tmp.script.iss
+          path: autocompile.publish.tmp.script.stable.iss
           options: /O+
           
       - name: Pushing new release
@@ -103,16 +103,16 @@ jobs:
           name: ${{ steps.version_info.outputs.build_version }}
           artifacts: "*.zip, build/*.exe"
           tag: ${{ steps.version_info.outputs.build_version }}
-          body: "## 🐲 Ryujinx Installer Release v ${{ steps.version_info.outputs.build_version }} - Ryubing Fork
+          body: "## 🐲 Ryujinx Installer Stable Release v ${{ steps.version_info.outputs.build_version }} - Ryubing Fork
 
                   ![GitHub Actions Badge](https://img.shields.io/badge/GitHub%20Actions-181717?logo=github&logoColor=fff&style=flat)</br>
                   ***This release was generated by GitHub Actions.***</br>
                   ***Build Time: ${{ steps.version_info.outputs.build_date }} , UTC+8; Version: ${{ steps.version_info.outputs.build_version }}***</br></br>
                   This release contains the auto-compiled installer of Ryujinx Emulator ***v ${{ steps.version_info.outputs.build_version }} (Ryubing Fork)***.</br>
-                  If you want to check out the update details of each version, please view the release page to see the [**Changelog**](https://github.com/Ryubing/Ryujinx/releases/tag/${{ steps.version_info.outputs.build_version }}).</br>
+                  If you want to check out the update details of each version, please view the release page to see the [**Changelog**](https://git.ryujinx.app/ryubing/ryujinx/-/releases/${{ steps.version_info.outputs.build_version }}).</br>
                   
                   > [!TIP]</br>
-                  **This project can check for updates regularly and build the installers instantly by GitHub Actions, so it is generally synchronized with the progress of the [Ryubing Fork](https://github.com/Ryubing/Ryujinx/releases).**"
+                  **This project can check for updates regularly and build the installers instantly by GitHub Actions, so it is generally synchronized with the progress of the [Ryubing Fork](https://git.ryujinx.app/ryubing/ryujinx/-/releases).**"
           omitBodyDuringUpdate: true
           allowUpdates: true
           replacesArtifacts: true

@@ -10,7 +10,7 @@
 ENGLISH | [简体中文](./README_CN.md)
 
 This repository contains the releases of auto-compiled Ryujinx installers and the source code written in [Inno Setup](https://jrsoftware.org/isinfo.php) Script.</br>
-If you want to check out the update details of each version, please view the release page to see the [Changelog](https://github.com/Ryubing/Ryujinx/releases).</br>
+If you want to check out the update details of each version, please view the release page to see the [Changelog](https://git.ryujinx.app/ryubing/ryujinx/-/releases).</br>
 This project can check for updates regularly and build the installers instantly by GitHub Actions, so it is generally synchronized with the release progress of Ryubing Fork.</br>
 
 ## Usage
@@ -41,7 +41,7 @@ Now, double-click the file, you can start the game contains in the `NSP package*
 
 After installation, please follow the official guide to finish configuration of the emulator. 
 
-[Setup & Configuration Guide](https://github.com/Ryubing/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide)
+[Setup & Configuration Guide](https://git.ryujinx.app/ryubing/ryujinx/-/wikis/Setup-&-Configuration-Guide)
 
 > [!IMPORTANT]
 >**To run this emulator, your PC must be equipped with at least 8GiB of RAM; failing to meet this requirement may result in a poor gameplay experience or unexpected crashes.**
@@ -53,7 +53,7 @@ GitHub Actions will check updates per 6 hours, keep this build synchronized with
 
 > [!NOTE]
 **I am working on this project in my free time. As a student, I may not be able to fix the bugs in time. I really appreciate your understanding.**</br>
-**These builds are only for Windows. Official builds for Linux / macOS can be found on the [Release Page](https://github.com/Ryubing/Ryujinx/releases).**
+**These builds are only for Windows. Official builds for Linux / macOS can be found on the [Release Page](https://git.ryujinx.app/ryubing/ryujinx/-/releases).**
 
 ## Contact
 * If you have any promblems/suggestions, please contact me via [jh327063592@163.com](mailto:jh327063592@163.com).
