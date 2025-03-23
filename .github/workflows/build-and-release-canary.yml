@@ -55,6 +55,7 @@ jobs:
         run: |
           git config --global user.name 'LuccaWang404'
           git config --global user.email 'jh327063592@163.com'
+          git switch canary
           git add ryujinx_canary_latest_tag.flag
           git commit -m "Canary Version Update"
         shell: powershell
