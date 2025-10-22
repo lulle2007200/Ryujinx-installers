@@ -13,7 +13,7 @@ jobs:
       - name: Get version information
         id: version_info
         run: |
-          LATEST_RELEASE=$(curl --silent "https://git.ryujinx.app/api/v4/projects/ryubing%2Fryujinx/releases/permalink/latest" | jq -r .tag_name)
+          LATEST_RELEASE=$(curl -sL -H "https://git.ryujinx.app/api/v4/projects/ryubing%2Fryujinx/releases/permalink/latest" | jq -r .tag_name)
           echo "build_version=$LATEST_RELEASE" >> $GITHUB_OUTPUT
         shell: bash
         
