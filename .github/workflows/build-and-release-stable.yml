@@ -13,7 +13,7 @@ jobs:
       - name: Get version information
         id: version_info
         run: |
-          LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/Ryubing/Stable-Releases/releases/latest" | jq -r .tag_name)
+          LATEST_RELEASE=$(curl --silent "https://git.ryujinx.app/api/v4/projects/ryubing%2Fryujinx/releases/permalink/latest" | jq -r .tag_name)
           echo "build_version=$LATEST_RELEASE" >> $GITHUB_OUTPUT
         shell: bash
         
@@ -40,7 +40,7 @@ jobs:
         run: |
           $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
           $PSDefaultParameterValues['Out-File:Encoding'] = 'Default'
-          $response = Invoke-RestMethod -Uri "https://api.github.com/repos/Ryubing/Stable-Releases/releases/latest"
+          $response = Invoke-RestMethod -Uri "https://git.ryujinx.app/api/v4/projects/ryubing%2Fryujinx/releases/permalink/latest"
           $tag_name = $response.tag_name
           $previous_tag_name = cat ryujinx_stable_latest_tag.flag
           if ($tag_name -eq $previous_tag_name) {
@@ -69,7 +69,7 @@ jobs:
       - name: Save version and date information to $env
         id: version_info
         run: |
-          $response = Invoke-RestMethod -Uri "https://api.github.com/repos/Ryubing/Stable-Releases/releases/latest"
+          $response = Invoke-RestMethod -Uri "https://git.ryujinx.app/api/v4/projects/ryubing%2Fryujinx/releases/permalink/latest"
           $tag_name = $response.tag_name
           echo "build_version=$tag_name" >> $env:GITHUB_OUTPUT
           $build_date = Get-Date
@@ -78,7 +78,7 @@ jobs:
         shell: powershell
       - name: Download & extract latest release
         run: |
-          wget -o ryujinx-${{ steps.version_info.outputs.build_version }}-win_x64.zip https://github.com/Ryubing/Stable-Releases/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-win_x64.zip
+          wget -o ryujinx-${{ steps.version_info.outputs.build_version }}-win_x64.zip https://git.ryujinx.app/api/v4/projects/ryubing%2Fryujinx/packages/generic/Ryubing/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-win_x64.zip
           wget -o ryujinx-stable-source-${{ steps.version_info.outputs.build_version }}.zip https://git.ryujinx.app/ryubing/ryujinx/-/archive/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}.zip
           7z x ryujinx-${{ steps.version_info.outputs.build_version }}-win_x64.zip
         shell: powershell
